@@ -1,3 +1,6 @@
+---
+title: Every Door Privacy Policy
+---
 # Every Door Privacy Policy
 
 We do not store your data, period.
