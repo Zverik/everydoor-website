@@ -57,14 +57,20 @@ Here is how the notation in the editor related to these tags:
 * `1/0`: `addr:floor=1` + `level=0` (and there's an object nearby
   with the same `addr:floor`, but different `level`, or vice-versa).
 
-## Why is the street list missing some streets from the map?
+## All tagging questions
 
-Street names for editor fields are taken not from roads (`highway=*`),
-but from the nearby addressed buildings and amenities (`addr:street=*`).
-Therefore it might be impossible to set an address to a building
-or an amenity, if there are no other addresses for the street.
+Why an object is missing in the editor? When these white dots are
+displayed in the micromapping mode? How objects are sorted?
 
-This is an registered issue, follow [this ticket](https://github.com/Zverik/every_door/issues/61).
+Answers to all these questions are in
+[good\_tags.dart](https://github.com/Zverik/every_door/blob/main/lib/helpers/good_tags.dart).
+Here's what you can look at:
+
+* The key order for the main tag — list `kMainKeys`.
+* Which objects are downloaded — function `isGoodTags`.
+* What is considered an amenity — function `isAmenityTags`.
+* Which points are snapped to what ways — function `detectSnap`.
+* When a micromapping object is incomplete — function `needsMoreInfo`.
 
 ## How to change or translate preset fields?
 
