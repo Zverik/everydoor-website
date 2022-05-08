@@ -28,7 +28,7 @@ the amenities again.
 
 ## How to add a building entrance?
 
-At the top right there's a grey button for switching editing modes.
+At the top right there's a button for switching editing modes.
 It changes modes between amenities, micromapping, and entrances.
 
 In the entrance mode, tap or drag the door button in the bottom
