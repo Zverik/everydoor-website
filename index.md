@@ -20,7 +20,11 @@ The best OpenStreetMap editor for POI and entrances.
 
 ## Testing
 
-Currently the editor in in the open testing phase. Links pending.
+Currently the editor in in the open testing phase.
+
+* [iOS](https://testflight.apple.com/join/5138nQCq)
+* [Android](https://play.google.com/store/apps/details?id=info.zverev.ilya.every_door)
+* [GitHub APK](https://github.com/Zverik/every_door/releases)
 
 ## FAQ
 
