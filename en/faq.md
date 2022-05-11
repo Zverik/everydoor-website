@@ -26,6 +26,14 @@ you tap it and continue.
 The mark stays checked for two weeks. After that you may survey
 the amenities again.
 
+## Why the app is in German?
+
+If you expect English, try going to the phone Settings. There find
+"System", and "Languages". Try adding the English language to the list
+and restarting the editor.
+
+There'll be a language switcher in the app later.
+
 ## How to add a building entrance?
 
 At the top right there's a button for switching editing modes.
