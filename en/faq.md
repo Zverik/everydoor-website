@@ -84,8 +84,6 @@ Here's what you can look at:
 
 The editor relies on iD editor presets. To modify these, submit
 a pull request to [this repo](https://github.com/openstreetmap/id-tagging-schema).
-Alas it's not maintained at the moment: we need to find volunteers
-and convince the owners.
 
 The presets are translated at [Transifex](https://www.transifex.com/openstreetmap/id-editor/translate/#ru/presets/).
 
