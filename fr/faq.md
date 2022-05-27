@@ -59,7 +59,7 @@ Les réponses à toutes ces questions sont dans [good\_tags.dart](https://github
 
 ## Comment changer ou traduire les champs d’un préréglage ?
 
-L’éditeur est basé sur les préréglages de l’éditeur iD. Pour les modifier, allez sur [ce dépot](https://github.com/openstreetmap/id-tagging-schema). Malheureusement, cela n’est pas maintenu pour le moment, nous avons besoin de volontaires et de convaincre les propriétaires.
+L’éditeur est basé sur les préréglages de l’éditeur iD. Pour les modifier, allez sur [ce dépot](https://github.com/openstreetmap/id-tagging-schema).
 
 La traduction passe par [Transifex](https://www.transifex.com/openstreetmap/id-editor/translate/#ru/presets/).
 

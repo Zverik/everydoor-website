@@ -78,8 +78,6 @@ title: Every Door ЧаВО
 
 Редактор использует заготовки из редактора iD. Чтобы их изменить,
 сделайте пул-реквест в [этот репозиторий](https://github.com/openstreetmap/id-tagging-schema).
-Увы, сейчас им никто не занимается: нужно будет найти добровольцев
-и убедить владельцев.
 
 Переводят заготовки [на Transifex](https://www.transifex.com/openstreetmap/id-editor/translate/#ru/presets/).
 
