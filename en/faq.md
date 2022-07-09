@@ -65,6 +65,14 @@ Here is how the notation in the editor related to these tags:
 * `1/0`: `addr:floor=1` + `level=0` (and there's an object nearby
   with the same `addr:floor`, but different `level`, or vice-versa).
 
+## How to undo an edit?
+
+In the changes list available from Settings, just swipe the item to the left.
+
+## How to change an amenity type?
+
+Tap on the editor title, where the type is written.
+
 ## All tagging questions
 
 Why an object is missing in the editor? When these white dots are
