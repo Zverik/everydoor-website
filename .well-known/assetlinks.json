@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "info.zverev.ilya.every_door",
+    "sha256_cert_fingerprints":
+    ["9F:FC:A7:0F:77:A8:5E:F6:82:90:27:66:02:BB:5B:4C:92:A6:54:67:C5:4F:F6:FB:89:C4:B2:02:39:50:62:03"]
+  }
+}]
