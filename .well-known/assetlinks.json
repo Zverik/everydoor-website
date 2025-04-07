@@ -10,4 +10,14 @@
       "61:5D:43:AC:81:08:3C:D9:1D:98:16:50:74:76:36:F6:7C:7C:EC:02:33:5A:F2:51:A4:DD:B2:53:53:35:4C:02"
     ]
   }
+},
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "info.zverev.ilya.every_door.beta",
+    "sha256_cert_fingerprints": [
+      "29:90:21:68:8B:04:21:91:A0:90:65:B9:A7:46:3B:72:62:85:40:72:8C:31:C6:C5:2D:8D:BE:B8:21:53:31:FB"
+    ]
+  }
 }]
