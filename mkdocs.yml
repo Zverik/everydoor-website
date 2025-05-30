@@ -1,0 +1,50 @@
+site_name: Every Door
+site_url: https://every-door.app/docs/
+site_description: Every Door Documentation
+theme:
+  name: material
+  language: en
+  favicon: favicon.png
+  logo: favicon.png
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    - navigation.indexes
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+extra_css:
+  - stylesheets/extra.css
+
+exclude_docs: |
+  !.well-known
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Zverik/every_door
+    - icon: fontawesome/brands/mastodon
+      link: https://en.osm.town/@everydoor
+
+nav:
+  - User Guide:
+    - OpenStreetMap: guide/preface.md
+    - FAQ: guide/faq.md
+  - Developer Guide: develop/index.md
+  - Plugins:
+    - plugins/index.md
+    - Installation: plugins/install.md
+    - Writing a Plugin:
+      - plugins/metadata/index.md
+      - Element Kinds: plugins/metadata/element_kinds.md
+      - Editor Modes: plugins/metadata/modes.md
+      - Presets: plugins/metadata/presets.md
+      - Imagery: plugins/metadata/imagery.md
+    - Programming:
+      - plugins/code/index.md
+    - Publishing: plugins/publish.md

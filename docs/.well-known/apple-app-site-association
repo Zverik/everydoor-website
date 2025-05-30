@@ -1,0 +1,22 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": ["TM4TW7N79V.info.zverev.everydoor"],
+             "components": [
+               {
+                  "/": "/nav/*",
+                  "comment": "Navigate to a location or an OSM object"
+               },
+               {
+                  "/": "/plugin/*",
+                  "comment": "Install a plugin"
+               }
+             ]
+           }
+       ]
+   },
+   "webcredentials": {
+      "apps": [ "TM4TW7N79V.info.zverev.everydoor" ]
+   }
+}

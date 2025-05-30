@@ -4,4 +4,4 @@ This is the source code for [every-door-app](https://every-door.app) about the [
 
 Please write issues [there](https://github.com/Zverik/every_door/issues), or better, make pull requests.
 
-Made by Ilya Zverev, licensed CC0.
+Made by Ilya Zverev, licensed CC-BY 4.0.
