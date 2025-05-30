@@ -3,7 +3,7 @@ title: Presets
 ---
 Every Door allows for adding and redefining presets and fields. By _presets_, we mean a set of tags that define an object, and a set of fields that appear in its editor panels. And _fields_ are items on those panels, like input fields or choice buttons.
 
-# Presets
+## Presets
 
 All presets go under the `presets` key in the `plugin.yaml` file, as "id-definition" maps. It's worth looking at the [iD preset schema](https://github.com/ideditor/schema-builder?tab=readme-ov-file#presets) documentation to understand the structure. Here's an example:
 
@@ -62,7 +62,7 @@ Plugin presets take priority over bundled presets, so it is possible to override
       - '@amenity/bench'
 ```
 
-# Fields
+## Fields
 
 Fields are commonly used in presets, and also share large parts of the schema with [iD presets](https://github.com/ideditor/schema-builder?tab=readme-ov-file#fields). In a plugin definition they go under a `fields` key, and just like presets, those are "id-definition" maps. Here is how the `benchType` field from the example above is defined:
 

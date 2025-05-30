@@ -17,7 +17,7 @@ We have multiple pre-defined element kinds:
 * `empty`: no meaningful tags except `source` and `note`.
 * `unknown`: a nothing-kind that's returned when an object does not match other kinds.
 
-# Main Key
+## Main Key
 
 Before everything else, we need to clarify what "main key" means. Every Door works on an assumption that every object in OSM data represents one separate entity. This is not always correct (e.g. shops on buildings, or fences and school areas), but mostly checks out: it is exceptionally rare to find a `shop` and `amenity` on a single POI object.
 
@@ -27,7 +27,7 @@ It is not possible to extend the main key list through a plugin, you would need 
 
 Now, some standard element kinds apply only to the main tag (key and value). Those are `amenity`, `needsCheck`, `structure`, `micro`, and `everything`. Others either don't care for an object type (like `empty`), or acknowledge an object can be multiple things at once (like `building`).
 
-# Defining Kinds
+## Defining Kinds
 
 A simple `ElementKind` looks like this:
 
@@ -63,7 +63,7 @@ You might think, this looks exactly like the [current definition](https://github
 
 Note that the editor won't touch linear features, so there is no point in enabling, for example, `waterway=river` or `highway=residential`.
 
-# Matchers
+## Matchers
 
 A tag matcher (the one you specify for an element kind) looks at tag keys, like `amenity` or `man_made`. It's the first layer of testing: if a key is not in its dictionary, it fails the check.
 
@@ -74,7 +74,7 @@ The definition for a matcher is a map with tag keys for keys, and matching rules
 * `when`: a map of "value: tag matcher". It invokes a nested matcher when the tag has the given value. It allows for testing secondary tags, e.g. `recycling_type=*` for `amenity=recycling`.
 * `replace`: when redefining a matcher, this boolean flag (`true` by default) controls whether we're replacing all the rules, or updating the lists. Matchers in `when` get replaced in any case. Note that you cannot _remove_ entries from `only` and `except`, only append to the lists. To remove, just copy a list without some entries, like we did above in the `amenity=parking_space` example.
 
-## Matching on the Main Key
+### Matching on the Main Key
 
 If an element kind containing tag matcher works on main keys, the matcher can automatically accept an object when certain keys are present. A list of those keys goes into `$good` attribute. It looks like this:
 
@@ -98,7 +98,7 @@ kinds:
 
 This example illustrates both keys that are considered amenities for every possible values, and a conditional `amenity=recycling` handling.
 
-## Missing Tags
+### Missing Tags
 
 There is also a `$missing` tag matcher list, which behaves weirdly. It passes only when at least one of the listed keys are missing. That is, if we have `"$missing": [leaf_type, leaf_cycle]`, then the matched will pass only when the object does not have at least one of those two tags.
 
