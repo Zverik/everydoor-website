@@ -11,7 +11,7 @@ Top level keys are:
 * `author`: who wrote the plugin.
 * `icon`: an icon for the plugin (see below).
 * `homepage`: a link to GitHub or another website to read about the plugin.
-* `url`: a link to download the recent version of the plugin.
+* `source`: a link to download the recent version of the plugin.
 
 ## Icons
 
