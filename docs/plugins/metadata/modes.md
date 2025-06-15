@@ -47,7 +47,7 @@ Fields for a new mode:
     * `tooltip`: a tooltip for the icon.
     * `adjustZoom`: if different from 0.0, when you start dragging the button onto the map, it temporarily changes zoom level inwards. For example, the default entrances button has this set to 0.7.
 * `secondary`: the same for the second button.
-* `rendering`: a mapping for element kind → rendering definition. Each one can have those keys:
+* `markers`: a mapping for element kind → representation definition. Each one can have those keys:
     * `requiredKeys`: list of tag keys that need to be non-empty in order for the object to be considered fully surveyed. For example, a tree could have `[leaf_type, leaf_cycle]`.
     * `icon`: whether to draw an icon here. Add `iconPartial` to notice missing keys.
     * `label`: a template to print on the marker, e.g. `{capacity}` for bicycle parking. Keys should be enclosed in figure quotes.

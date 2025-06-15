@@ -1,30 +1,60 @@
 # Installation
 
-You would need to make your plugin available from some URL.
+Plugins are not meant to sit on your computer and do nothing. How to load them
+onto your phone, and make them available to thousands of Every Door users (if
+you want that)?
 
-Look for the "Plugins" entry in the Settings pane (behind the top left stripes button).
-At the top right there will be a button to scan a QR code of an URL.
-Alternatively, you could form an URL like such
-(it's a working [URL](https://plugins.every-door.app/i/cycling?url=https%3A%2F%2Ftextual.ru%2Fcycling.edp&update=true),
-"cycling" is the plugin identifier):
+You have four options for that.
 
-    https://plugins.every-door.app/i/cycling?url=https%3A%2F%2Ftextual.ru%2Fcycling.edp&update=true
+1. Share an `.edp` file. For example, send it to yourself with a messenger, and
+    open it on a device. This way you don't have to publish it, and you can
+    iterate on the development quickly. One issue is, it might not work on iOS.
 
-The plugin file should have an `.edp` file extension, and be a simple ZIP archive with a `plugin.yaml` file
-at the top level. Alas this method is not yet stable, QR codes are easier.
+2. Upload it to the [public repository](https://plugins.every-door.app/). It would
+    validate the package on upload, reserve a plugin identifier, and make it available
+    in the app. Just go to "Settings → Plugins → (+) button" and find it there.
+    You only need an OpenStreetMap account to publish plugins. Initially you can
+    mark your plugin "experimental", so it won't appear in public lists.
 
-Here is a QR code for you to test on:
+3. Upload it somewhere open, like to Github or your own web server. This option works
+    best for programmatically built plugins, e.g. for mapping party settings.
+    The file name should be equal to the plugin identifier.
+    To share it, create a QR code with the link to the file, and scan it with the
+    phone from the "Settings → Plugins → (+) → the button at the top right".
 
-![](cycling_edp.png){ width="200" }
+4. If some of your devices do not support reading QR codes, or you're publishing
+    plugins on a website intended to be used from a phone, then construct a plugin
+    installation link. It looks like this:
 
-An alternative QR code for a
-[plugin](https://plugins.every-door.app/i/cycling?url=https%3A%2F%2Ftextual.ru%2Fimagery.edp&update=true)
-that adds some imagery for the Nõmme region of Tallinn, Estonia, is behind this QR code:
+    `https://plugins.every-door.app/i/plugin_id?url=https%3A%2F%2Fexample.com%2F...%2Fplugin_id.edp`
 
-![](imagery_edp.png){ width="200" }
+    The `plugin_id` in the base url should match the file name and the identifier
+    from `plugin.yaml`, but it would also match against the plugin repository list.
+    You can use `my` instead, like `/i/my?...`.
 
-If the installation fails, check the system log in "Settings → About → System Log".
+    The link can also have query parameters: `version` to versionize plugins
+    (useful when you update a published plugin), `update=true` to force an
+    update even when a newer version of the plugin has been installed.
 
-As an option, you can download files on your device, and open them with Every Door app.
+## Versioning Plugins
+
+Plugin versions internally are all positive numbers, so it is perfectly valid to
+use a through enumeration: `1`, `2`, and so on.
+
+On the other hand, people are used to splitting major and minor releases, to
+differentiate between big improvements and bug fixes. With that, you can use
+that scheme for versioning, in the form of `<major>.<minor>`. For example,
+`0.1`, `1.0`, `1.1`, and so on.
+
+Internally those versions are converted into a single number by multiplying the
+major version by a thousand, and adding a thousand. So `0.1` becomes `1001`,
+and `2.0` — `3000`. This also means that after version `999` your plugin
+might suddenly gain version `0.0`: that would probably be a good time
+to switch to `1000.0`.
+
+## Troubleshooting
+
+If the installation fails, check the system log: press the button on screen,
+or find those in "Settings → About → System Log".
 
 To delete a plugin, open it in the settings panel, and tap "Delete".
