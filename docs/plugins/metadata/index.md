@@ -21,9 +21,14 @@ Formats supported are SVG (and its binary SI representation), PNG, GIF, and WebP
 
 Note that to make an SVG file re-colorable, you would need to add an attribute to either its elements, or to the `<svg>` outer tag: `stroke="currentColor"` and/or `fill="currentColor"`. This "current color" is what will be replaced with the icon color value.
 
+_Binary SI images (compiled SVG) are possible to create with [jovial_svg](https://pub.dev/packages/jovial_svg_transformer), but better wait until there is a packaging infrastructure for plugins._
+
 Raster images are converted to black-and-white on its transparency layer, and the color is set to all non-transparent pixels.
 
-_Binary SI images (compiled SVG) are possible to create with [jovial_svg](https://pub.dev/packages/jovial_svg_transformer), but better wait until there is a packaging infrastructure for plugins._
+Another option for fast prototyping is to use an emoji character for an icon. Two drawbacks of that are, emoji
+are not recolorable, and the alignment is slighly off. To use a character, find one
+in [Emojipedia](https://emojipedia.org/), switch to the "Techinical information" tab,
+and copy the codepoint sequence in form of `U+1F525` to the icon value.
 
 ## Translations
 
