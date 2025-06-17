@@ -25,23 +25,46 @@ Raster images are converted to black-and-white on its transparency layer, and th
 
 _Binary SI images (compiled SVG) are possible to create with [jovial_svg](https://pub.dev/packages/jovial_svg_transformer), but better wait until there is a packaging infrastructure for plugins._
 
+## Translations
+
+You can provide labels in many languages for a plugin. To add a translation
+into a language, create a top-level directory in the plugin package named `langs`,
+and inside it, files named with language codes, e.g. `es.yaml`, `pt-BR.yaml`.
+
+Each file should have the same structure as the `plugin.yaml`, but keeping
+just keys that need translation. Those usually are `name`, `label`, `labels`,
+`placeholder` etc. Some keys contain lists of strings instead of single
+string values, e.g. `labels` for preset fields. Translate them as usual,
+keeping the list in order.
+
 ## Imagery
 
-List layers in `imagery` and `overlays` sections. See [imagery](imagery.md).
+Read the [imagery](imagery.md) section when you want to:
+
+* Add a new base or overlay raster tile or WMS layer.
+* Include a GeoJSON file and display it in the app.
+* Package an MBTiles raster tile database with the plugin.
 
 ## Element Kinds
 
-An "element kind" is a set of rules that apply to tags to split objects into groups. Before the refactoring, some groups were made to non-intersect, but that can be untrue now. Each element kind has a string name, and a set of tag matching rules.
+Read the [element kinds](element_kinds.md) section to:
 
-New and overridden element kinds go under a `kinds` section, which is documented in [element\_kinds](element_kinds.md).
+* Add support for non-amenity tags, e.g. indoor or parking.
+* Understand why some objects are not displayed.
+* Define tag groups for some editing modes.
 
 ## Modes
 
-Modes are listed in the `modes` entry as maps: keys are mode identifiers, and values are maps of key-value mode settings.
+Read the [modes](modes.md) section to:
 
-See [modes](modes.md) for a detailed explanation.
+* Customize colors and markers in the micromapping mode.
+* Update the default preset lists.
+* Create a custom entrances-like mode for dropping objects on the map.
 
 ## Presets and Fields
 
-Those go into `presets` and `fields` sections. All explained in [presets](presets.md).
+Read the [presets](presets.md) section to:
 
+* Add a custom preset that shouldn't go into the global presets repository.
+* Add a custom field and employ it in some presets.
+* Define fields for a new entrances-like mode.
