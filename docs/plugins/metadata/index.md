@@ -21,6 +21,8 @@ Formats supported are SVG (and its binary SI representation), PNG, GIF, and WebP
 
 Note that to make an SVG file re-colorable, you would need to add an attribute to either its elements, or to the `<svg>` outer tag: `stroke="currentColor"` and/or `fill="currentColor"`. This "current color" is what will be replaced with the icon color value.
 
+Good sources for SVG icons are [Maki](https://github.com/mapbox/maki/tree/main) and [Temaki](https://github.com/rapideditor/temaki).
+
 _Binary SI images (compiled SVG) are possible to create with [jovial_svg](https://pub.dev/packages/jovial_svg_transformer), but better wait until there is a packaging infrastructure for plugins._
 
 Raster images are converted to black-and-white on its transparency layer, and the color is set to all non-transparent pixels.
