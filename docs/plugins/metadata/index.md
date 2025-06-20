@@ -1,30 +1,66 @@
-# Metadata Keys
+# Plugin Metadata
 
-The `plugin.yaml` file is a simple key-value dictionary. There are some top-level keys, like a plugin name, and sections relating to various configurable subsystems.
+A plugin is a zip-archive with an `edp` extension, which includes a `plugin.yaml` file
+inside at the top level. This section explains how to write it.
+
+The `plugin.yaml` file is a simple key-value dictionary in YAML format.
+There are some top-level keys, like a plugin name, and sections relating to
+various configurable subsystems.
 
 Top level keys are:
 
-* `id`: the plugin identifier. Should be different from other identifiers (otherwise this plugin would replace another with the same id), and consist of characters, numbers, and maybe some punctuation. This is the only required key.
+* `id`: the plugin identifier. Should be different from other identifiers (otherwise this plugin would replace another with the same id), and consist of latin characters, numbers, dashes, and underscores. This is the only required key.
 * `name`: plugin name. Can be translated (see below).
-* `version`: numeric version, floating point.
-* `description`: long-form description of what this plugin does.
+* `version`: numeric version (see below).
+* `description`: long-form description of what this plugin does. Split paragraphs with double newlines.
 * `author`: who wrote the plugin.
 * `icon`: an icon for the plugin (see below).
+* `experimental`: `true` if the plugin should be hidden from the repository lists, `false` otherwise.
 * `homepage`: a link to GitHub or another website to read about the plugin.
 * `source`: a link to download the recent version of the plugin.
+
+While only the `id` key is required, it's best to provide as many values as possible, at least for the first four: including `name`, `version`, and `description`. Here's for an example:
+
+```yaml
+id: cycling_infra
+name: Cycling Infrastructure
+version: 2
+author: Ilya Zverev
+icon: cycling.svg
+description: |
+  Testing plugin that adds a new mode to the editor, related to bicycle infrastructure.
+
+  It resembles the building mode, but the primary (right) button adds a cycling barrier,
+  and the secondary adds a bicycle parking stand. For the latter, capacity is shown
+  on the map.
+experimental: false
+```
+
+## Versioning Plugins
+
+Plugin versions internally are all positive numbers, so it is perfectly valid to
+use a through enumeration: `1`, `2`, and so on.
+
+On the other hand, people are used to splitting major and minor releases, to
+differentiate between big improvements and bug fixes. With that, you can use
+that scheme for versioning, in the form of `<major>.<minor>`. For example,
+`0.1`, `1.0`, `1.1`, and so on.
+
+Internally those versions are converted into a single number by multiplying the
+major version by a thousand, and adding a thousand. So `0.1` becomes `1001`,
+and `2.0` — `3000`. This also means that after version `999` your plugin
+might suddenly gain version `0.0`: that would probably be a good time
+to switch to `1000.0`.
 
 ## Icons
 
 Some sections expect an `icon` key. The value should be a file name of an image packaged with the plugin, in the `icons` subdirectory. For example, if you specify `icon: cycling.svg`, then the editor would look for `icons/cycling.svg` file in the plugin archive.
 
-Formats supported are SVG (and its binary SI representation), PNG, GIF, and WebP.
-
-Note that to make an SVG file re-colorable, you would need to add an attribute to either its elements, or to the `<svg>` outer tag: `stroke="currentColor"` and/or `fill="currentColor"`. This "current color" is what will be replaced with the icon color value.
-
+Formats supported are SVG, PNG, GIF, and WebP.
 Good sources for SVG icons are [Material Icons](https://fonts.google.com/icons?icon.size=24&icon.color=%231f1f1f),
 [Maki](https://github.com/mapbox/maki/tree/main), and [Temaki](https://github.com/rapideditor/temaki).
 
-_Binary SI images (compiled SVG) are possible to create with [jovial_svg](https://pub.dev/packages/jovial_svg_transformer), but better wait until there is a packaging infrastructure for plugins._
+Note that to make an SVG file re-colorable, you would need to add an attribute to either its elements, or to the `<svg>` outer tag: `stroke="currentColor"` and/or `fill="currentColor"`. This "current color" is what will be replaced with the icon color value.
 
 Raster images are converted to black-and-white on its transparency layer, and the color is set to all non-transparent pixels.
 

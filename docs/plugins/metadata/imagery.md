@@ -29,11 +29,12 @@ Available keys are:
 * `type`: one of those:
     * `tms`: a regular tile service with URLs usually ending in `/{zoom}/{x}/{y}.png`
     * `wms`: a WMS service, like the `turkuOrto` in the example. This type is implied when the URL contains `SERVICE=WMS`.
-    * `mbtiles`: a packaged [MBTiles](https://wiki.openstreetmap.org/wiki/MBTiles) file. This type is implied when the url (which should point to the file) ends with `.mbtiles`. A web URL would probably fail.
+    * `mbtiles`: a packaged [MBTiles](https://wiki.openstreetmap.org/wiki/MBTiles) file. This type is implied when the url (which should point to the file) ends with `.mbtiles`. Only raster tile packages are supported. A web URL would probably fail.
 * `attribution`: the string displayed on the screen when the layer is active.
 * `minZoom` and `maxZoom`: self-explanatory, integer numbers.
 * `wms4326`: a boolean field that should be true for WMS layers which support EPSG:4326, but not 3857.
 * `tileSize`: for TMS layers, defaults to 256.
+* `force`: when set to `true`, forces this imagery to be enabled when the plugin is installed, and on every app restart.
 
 To change the base map layer, use `base` for an imagery key. For example:
 
@@ -41,6 +42,7 @@ To change the base map layer, use `base` for an imagery key. For example:
 imagery:
   base:
     name: "Topo Map"
+    url: ...
 ```
 
 ## Overlays

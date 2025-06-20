@@ -5,7 +5,7 @@ Every Door allows for adding and redefining presets and fields. By _presets_, we
 
 ## Presets
 
-All presets go under the `presets` key in the `plugin.yaml` file, as "id-definition" maps. It's worth looking at the [iD preset schema](https://github.com/ideditor/schema-builder?tab=readme-ov-file#presets) documentation to understand the structure. Here's an example:
+All presets go under the `presets` key in the `plugin.yaml` file, as "id→definition" maps. It's worth looking at the [iD preset schema](https://github.com/ideditor/schema-builder?tab=readme-ov-file#presets) documentation to understand the structure. Here's an example:
 
 ```yaml
 presets:
@@ -41,9 +41,9 @@ Here it defines a preset with an identifier `taaraautomaat` (not present in the 
 * `removeTags`: which tags to remove when changing the type of the object to another preset.
 * `fields`: a list of string identifiers of fields to present in an editor. Can include a reference to fields of another preset, starting with "@": in the example, it adds a custom field on top of the standard fields of a `bottle_return` preset. Currently you cannot reference plugin-packaged presets here.
 * `moreFields`: same, but for the initially collapsed extended field list. If omitted, and when `fields` contain a reference to a preset, it will be populated from the `moreFields` list of that preset.
-* `standard`: by default, the editor panel constructs a third group of fields, "standard fields". Those contain a name, address, and other stuff. For custom forms that could be undesired, so when this key is set to `false`, fields will be presented as-is.
+* `standard`: by default, the editor panel constructs a third group of fields, "standard fields". Those contain an address and a level for everything, and a name, wheelchair access and other stuff for amenities. For custom forms that could be undesired, so when this key is set to `false`, fields will be presented as-is.
 
-If a `fields` list is missing, the preset is considered to be a part of a [name suggestion index](https://github.com/osmlab/name-suggestion-index): it will appear in a differently-colored tile in search results, and will have its fields retrieved from a matching normal preset.
+If the `fields` list is missing, the preset is considered to be a part of a [name suggestion index](https://github.com/osmlab/name-suggestion-index): it will appear in a differently-colored tile in search results, and will have its fields retrieved from a matching normal preset.
 
 Plugin presets take priority over bundled presets, so it is possible to override some of those. For example, this snippet adds a custom `benchType` field to the bench preset (while losing the translations and custom search terms):
 
@@ -64,7 +64,7 @@ Plugin presets take priority over bundled presets, so it is possible to override
 
 ## Fields
 
-Fields are commonly used in presets, and also share large parts of the schema with [iD presets](https://github.com/ideditor/schema-builder?tab=readme-ov-file#fields). In a plugin definition they go under a `fields` key, and just like presets, those are "id-definition" maps. Here is how the `benchType` field from the example above is defined:
+Fields are commonly used in presets, and also share large parts of the schema with [iD presets](https://github.com/ideditor/schema-builder?tab=readme-ov-file#fields). In a plugin definition they go under a `fields` key, and just like presets, those are "id→definition" maps. Here is how the `benchType` field from the example above is defined:
 
 ```yaml
 fields:

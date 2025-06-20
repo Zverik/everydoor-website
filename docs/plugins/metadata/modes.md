@@ -5,11 +5,21 @@ Modes are listed in the `modes` entry as maps: keys are mode identifiers, and va
 
 There are four mode types which are also the names of the four pre-defined modes: `micro`, `amenity`, `entrances`, `notes`. When your mode identifier is one of those, it doesn't add a new mode, but alters parameters of an existing mode.
 
-For a new mode, you should specify `icon` and `iconOutlined` with a mode icon. The second is optional.
+You can hide an existing mode by adding `hide: true` option. Like this:
+
+```yaml
+modes:
+  entrances:
+    hide: true
+  notes:
+    hide: true
+```
+
+For a new mode, you should specify `icon` and `iconActive` with a mode icon. The second one is optional.
 
 Note that not all parameters that you specify for a new mode can be adjusted for an existing mode.
 
-### Micromapping
+## Micromapping
 
 Things you can adjust:
 
@@ -20,7 +30,7 @@ Things you can adjust:
     * We use [this library](https://pub.dev/packages/material_color_names) to resolve color names. Also several `ed`-prefixed colors are available, for those pre-built into the micromapping mode. For example, `edRed` and `edTeal`.
 * `iconsInLegend`: when assigning an icon to a preset, it might be obvious from its appearance on the map. So when you do it at scale, the legend might become redundant. Setting this flag to `false` removes iconized items from the legend.
 
-### Amenity
+## Amenity
 
 This mode is technically similar to the micromapping mode, hence some settings are similar:
 
@@ -34,7 +44,7 @@ But there are new ones:
 
 Currently you cannot create new instances of this mode.
 
-### Entrances
+## Entrances
 
 This mode can be duplicated. Actually, it cannot be modified at the moment, since there are no replaceable attributes, so copying is the only mode of operation.
 
@@ -53,7 +63,7 @@ Fields for a new mode:
     * `label`: a template to print on the marker, e.g. `{capacity}` for bicycle parking. Keys should be enclosed in figure quotes.
     * If nothing is specified, a round marker would be used, filled yellow for "complete" and white otherwise.
 
-### Notes
+## Notes
 
 Currently cannot be customized much, and because of this, cannot be duplicated. You can only change one property of the `notes` mode:
 

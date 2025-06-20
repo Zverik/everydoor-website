@@ -32,25 +32,9 @@ You have four options for that.
     from `plugin.yaml`, but it would also match against the plugin repository list.
     You can use `my` instead, like `/i/my?...`.
 
-    The link can also have query parameters: `version` to versionize plugins
+    The link can also have query parameters: `version` to [versionize plugins](metadata/index.md#versioning-plugins)
     (useful when you update a published plugin), `update=true` to force an
     update even when a newer version of the plugin has been installed.
-
-## Versioning Plugins
-
-Plugin versions internally are all positive numbers, so it is perfectly valid to
-use a through enumeration: `1`, `2`, and so on.
-
-On the other hand, people are used to splitting major and minor releases, to
-differentiate between big improvements and bug fixes. With that, you can use
-that scheme for versioning, in the form of `<major>.<minor>`. For example,
-`0.1`, `1.0`, `1.1`, and so on.
-
-Internally those versions are converted into a single number by multiplying the
-major version by a thousand, and adding a thousand. So `0.1` becomes `1001`,
-and `2.0` — `3000`. This also means that after version `999` your plugin
-might suddenly gain version `0.0`: that would probably be a good time
-to switch to `1000.0`.
 
 ## Troubleshooting
 

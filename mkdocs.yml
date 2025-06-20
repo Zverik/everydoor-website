@@ -30,9 +30,19 @@ extra:
 
 nav:
   - User Guide:
+    - guide/index.md
     - OpenStreetMap: guide/preface.md
+    - Quick Start: guide/quick_start.md
     - FAQ: guide/faq.md
-  - Developer Guide: develop/index.md
+    - Releases:
+      - 6.0: guide/releases/6.0.md
+  - Developer Guide:
+    - develop/index.md
+    - Translating: develop/translate.md
+    - Adding Presets: develop/presets.md
+    - Design Principles: develop/design.md
+    - Developing: develop/build.md
+    - Project Structure: develop/structure.md
   - Plugins:
     - plugins/index.md
     - Installation: plugins/install.md
