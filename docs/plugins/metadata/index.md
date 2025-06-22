@@ -18,6 +18,7 @@ Top level keys are:
 * `experimental`: `true` if the plugin should be hidden from the repository lists, `false` otherwise.
 * `homepage`: a link to GitHub or another website to read about the plugin.
 * `source`: a link to download the recent version of the plugin.
+* `intro`: a text that will be shown after installing the plugin (not when installing from a file), and also available from the plugin page. Can contain any markdown, including images and links.
 
 While only the `id` key is required, it's best to provide as many values as possible, at least for the first four: including `name`, `version`, and `description`. Here's for an example:
 

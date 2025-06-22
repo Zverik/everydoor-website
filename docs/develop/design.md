@@ -10,4 +10,11 @@ described in the [readme](https://github.com/Zverik/every_door/blob/main/README.
 
 Those principles can be circumvented with plugins, but they regulate the core experience.
 
-_TODO: explain everything, with examples._
+## Data Complexity
+
+
+
+## Screen Estate
+
+## Flow
+
