@@ -36,13 +36,15 @@ nav:
     - FAQ: guide/faq.md
     - Releases:
       - 6.0: guide/releases/6.0.md
-  - Developer Guide:
+  - Contributor Guide:
     - develop/index.md
     - Translating: develop/translate.md
     - Adding Presets: develop/presets.md
+    - Reporting Bugs: develop/bugs.md
     - Design Principles: develop/design.md
     - Developing: develop/build.md
     - Project Structure: develop/structure.md
+    - Finding Code: develop/examples.md
   - Plugins:
     - plugins/index.md
     - Installation: plugins/install.md
