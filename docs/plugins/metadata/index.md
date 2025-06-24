@@ -59,7 +59,9 @@ Some sections expect an `icon` key. The value should be a file name of an image 
 
 Formats supported are SVG, PNG, GIF, and WebP.
 Good sources for SVG icons are [Material Icons](https://fonts.google.com/icons?icon.size=24&icon.color=%231f1f1f),
-[Maki](https://github.com/mapbox/maki/tree/main), and [Temaki](https://github.com/rapideditor/temaki).
+and [Maki](https://github.com/mapbox/maki/tree/main).
+See [this list](https://github.com/ideditor/schema-builder/blob/main/ICONS.md) for
+additional sources.
 
 Note that to make an SVG file re-colorable, you would need to add an attribute to either its elements, or to the `<svg>` outer tag: `stroke="currentColor"` and/or `fill="currentColor"`. This "current color" is what will be replaced with the icon color value.
 
