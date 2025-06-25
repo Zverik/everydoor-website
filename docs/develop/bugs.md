@@ -56,6 +56,17 @@ and developers have a weird definition of "fun", so it's nearly impossible to pr
 
 You may try to create your feature [as a plugin](../plugins/index.md) instead.
 
+## Road Map
+
+Every Door development is tracked in [this project](https://github.com/users/Zverik/projects/1).
+It's split by milestones (that is, versions). It is unlikely that your bug or a feature
+would get worked on if they are not assigned a milestone, or do not have any labels.
+
+The road map should not be taken as a firm list of features that will be released with
+the new app version. It mostly sorts tickets into priorities: which should be worked on
+now, and which could be postponed when maintainers have more time, or a developers comes
+eager to work on something.
+
 ## Issues With Websites
 
 This documentation website (which doubles as a landing page) is also maintained
