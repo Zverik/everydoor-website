@@ -47,9 +47,14 @@ And you're all set! Open the project in your IDE and run it, or build it from co
 
 ```sh
 flutter pub get
+dart run build_runner build
 flutter build
 flutter run # if you have a phone connected or an emulator running
 ```
+
+The `build_runner` step creates a `lib/commit_info.g.dart` file with a current git commit hash.
+You do not need to re-run it unless you're publishing an apk for others to test, and want them
+to copy the full version (which is located on the About pane).
 
 ## Submitting Changes
 
