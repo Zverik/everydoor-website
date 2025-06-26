@@ -44,7 +44,7 @@ nav:
     - Design Principles: develop/design.md
     - Developing: develop/build.md
     - Project Structure: develop/structure.md
-    - Finding Code: develop/examples.md
+    - Finding Code: develop/cases.md
   - Plugins:
     - plugins/index.md
     - Installation: plugins/install.md

@@ -23,4 +23,4 @@ This section guides you around all the ways you can contribute.
 * [General design principles](design.md)
 * [Downloading the code and setting up an IDE](build.md)
 * [Navigate yourself around the code](structure.md)
-* [Guidelines on hacking specific things](examples.md)
+* [Guidelines on hacking specific things](cases.md)
