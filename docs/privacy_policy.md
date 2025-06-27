@@ -1,4 +1,4 @@
-# Every Door Privacy Policy
+# Privacy Policy
 
 ## You Upload To OpenStreetMap
 

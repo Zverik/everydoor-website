@@ -9,8 +9,8 @@ it, so you understand what goes where.
 * `android`: Android build files go here. Of most importance are `app/build.gradle`
     and `app/src/main/AndroidManifest.xml`. If you don't know why, please stay away from those.
     * Built apk and aab files are put into `android/app/prod/release`.
-    * Note that published apk on Github use Ilya's personal certificate,
-        while all beta apks, including those published to Releases,
+    * Note that published apk's on Github use Ilya's personal certificate,
+        while all beta apk's, including those published to Releases,
         are built with a secret certificate for Actions.
 * `ios`: iOS build files. In XCode, you open `Runner.xcworkspace`.
     * Built distribution package is put into `build/ios/archive/Runner.xcarchive`.
