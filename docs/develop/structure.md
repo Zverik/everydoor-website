@@ -74,12 +74,40 @@ There is also `commit_info.g.dart` generated into the `lib` root with the
 
 ### Models and Controllers
 
-* `models`:
-* `helpers`:
-* `providers`:
+* `models`: classes that are passed between the parts. The most important one
+    is in `amenity.dart` with the POI definition. Everything editable is
+    an `OsmChange`. Also note `field.dart` with two long functions to
+    create a field from a preset record.
+* `helpers`: non-visual functions and classes, and sometimes dictionaries.
+    Most algorithmic stuff goes here, and into providers too. Frankly it's
+    a mess, there's even a provider in there (`legend.dart`).
+    * `geometry`: geometric and geodetic functions, e.g. distance calculation,
+        or snapping points to lines.
+    * `tags`: everything related to tags and tag filtering. Some of it is
+        [described here](../plugins/metadata/element_kinds.md).
+* `providers`: all the [Riverpod](https://riverpod.dev/) providers. They
+    basically keep an application-wide state, and often are used for a
+    pure storage (tied to an app context). Some providers (like `uploader.dart`)
+    do not have a state, but link multiple providers together for convenience.
 
 ### Views
 
-* `screens`:
-* `widgets`:
-* `fields`:
+* `screens`: all the panes from the app. The app starts with the `loading.dart`,
+    then switches to `browser.dart`, which displays the current mode page.
+    * `modes`: mode pages that rely on corresponding `definitions`. The idea
+        being, you can override a definition to create or modify a mode.
+        There are four base modes, plus `navigate.dart` when you zoom out
+        too far.
+    * `editor`: panes and sheets used not only from the editor pane, but
+        also from modes. E.g. `building` and `entrance` are displayed when
+        you tap a button in the entrances mode. They all edit an `OsmChange`
+        or display information related to it.
+    * `settings`: all the panes accessible from the Settings menu.
+* `widgets`: building blocks for the app: buttons, markers, info blocks,
+    forms. The biggest thing is `map.dart` with a universal map widget.
+* `fields`: classes inheriting `PresetField` that implement editors for
+    various field types. Custom fields should go here.
+    * `hours`: the opening hours editor is the most complex in the app,
+        and all its parts are here.
+    * `helpers`: helpers and panes that some fields open, e.g. a direction
+        chooser with a map.
