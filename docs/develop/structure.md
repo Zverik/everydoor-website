@@ -27,15 +27,22 @@ it, so you understand what goes where.
 
 ## Tools
 
-* `common_hours.py`
-* `encode_url.dart`
-* `print_common_keys.py`
-* `test_sqlite_tags.py`
+* `common_hours.py`: the opening hours panel offers common starting and endind times.
+    This script find those in the TagInfo database.
+* `encode_url.dart`: encodes URLs with keys for imagery constants.
+* `print_common_keys.py`: this script prepares the `lib/helpers/tags/common_keys.dart`,
+    used in the raw tag editor.
+* `test_sqlite_tags.py`: preset queries are pretty complex (see `lib/providers/presets.dart`),
+    so this script was used to test those.
 
 ### Language Codes
 
-* `language_names.py`
-* `match_country_langs.py`
+* `language_names.py`: I've extracted the table from
+    [this Wikipedia page](https://simple.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+    to a CSV (`language_codes.csv`), and extracted language names and ISO codes to a Dart constant.
+* `match_country_langs.py`: this script build a reference table for languages in each
+    country. The Unicode CLDR data might have been better, but this one uses
+    [Organic Maps data](https://github.com/organicmaps/organicmaps/blob/master/data/countries_meta.txt).
 
 ### Building the Database
 
