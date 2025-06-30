@@ -14,6 +14,45 @@ a third group of fields that gets added on top of "fields" and "more fields" for
 object in the editor panel. This chapter traces its addition, marking what and where
 can be improved.
 
+### OsmChange
+
+First we must mention that the single most important class in the app is
+[`OsmChange`](https://github.com/Zverik/every_door/blob/v6.0/lib/models/amenity.dart).
+It defines a set of changes over the base `OsmElement` received from OpenStreetMap,
+and a few methods to manipulate an object. For example, it acts as a `Map<String, String>`
+for tags, but keeps the changes separate.
+
+It can calculate an age based on the `check_date`
+tag (but note that it's a bit inconsistent with the overridden values for the
+`amenity` mode). There are methods to confirm an object (`check()`) and to toggle
+its disused status. The one most important method that's used everywhere returns
+full tags in a map: `getFullTags()`. It is of course cached.
+
+### Detecting a Preset
+
+Now, to learn whether we need to add and shuffle fields, we first need to detect
+a preset. Let's look at `PoiEditorPage`'s state. In the `initState()`, the `amenity`
+(the object we edit) is either copied or created anew, and
+[`updatePreset()`](https://github.com/Zverik/every_door/blob/v6.0/lib/screens/editor.dart#L101)
+is called. For an already existing object (or a newly created from an NSI preset),
+we call [`getPresetForTags()`](https://github.com/Zverik/every_door/blob/v6.0/lib/providers/presets.dart#L231)
+from a preset provider.
+
+That method has got a lot of steps: checking for empty tags and `amenity=fixme` tags,
+asks plugins for an answer. But the main step is running a huge SQL query against
+the local SQLite database, which through clever CTE and sorting returns the one result.
+
+Is it good to have a single big SQL query? Felt like a clever idea at the time, but
+now I'm not so sure. But this method gets called dozens of times per second in the
+micromapping mode, so this could be considered optimizing.
+
+### Localization
+
+
+
+### Querying Fields
+
+
 _TODO_
 
 1. OsmChange vs OsmElement

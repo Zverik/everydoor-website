@@ -38,11 +38,11 @@ nav:
       - 6.0: guide/releases/6.0.md
   - Contributor Guide:
     - develop/index.md
+    - Reporting Bugs: develop/bugs.md
     - Translating: develop/translate.md
     - Adding Presets: develop/presets.md
-    - Reporting Bugs: develop/bugs.md
-    - Design Principles: develop/design.md
     - Developing: develop/build.md
+    - Design Principles: develop/design.md
     - Project Structure: develop/structure.md
     - Finding Code: develop/cases.md
   - Plugins:
