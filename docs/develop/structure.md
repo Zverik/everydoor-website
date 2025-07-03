@@ -118,3 +118,17 @@ There is also `commit_info.g.dart` generated into the `lib` root with the
         and all its parts are here.
     * `helpers`: helpers and panes that some fields open, e.g. a direction
         chooser with a map.
+
+### Data
+
+Not exactly about the code, but the important thing to understand is, where the
+data is stored. In the app, it is distributed among four sources:
+
+1. Android secure storage and shared preferences. Mostly for settings and tokens.
+    For example, switches state from the Settings panel is stored there.
+2. Presets SQLite database. It is packaged with the app and is read-only. It is
+    accessed solely through `PresetProvider`.
+3. App SQLite database. Mostly for downloaded OSM data, but also for location-dependent
+    indices and settings, e.g. payment tags. See the `DatabaseHelper` for the schema
+    and access.
+4. Transient in-memory storage, in virtually every provider. Mostly caches.

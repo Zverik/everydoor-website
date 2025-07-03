@@ -48,21 +48,58 @@ micromapping mode, so this could be considered optimizing.
 
 ### Localization
 
+All presets and fields are translated, so we pass the current `Locale` to preset
+provider methods. The plugin subsystem too requires it — and that's basically it.
+App localization is handled by the [intl](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+package.
 
+Passing locales to SQL queries in the preset provider works relatively simple.
+We [create a CTE](https://github.com/Zverik/every_door/blob/v6.0/lib/providers/presets.dart#L92)
+for a `langs` table that contains two columns, language
+code and a rank, starting with 1. And we join the results with this table,
+ordered by the language rank. Since window functions do not work in some
+SQLite versions, we just query all the results and keep the first one for
+each preset or field.
 
 ### Querying Fields
 
+After we have a preset, we call [`getFields()`](https://github.com/Zverik/every_door/blob/v6.0/lib/providers/presets.dart#L460)
+Initially a preset is returned with empty fields, because its name and title
+can be all we need (e.g. for the micromapping mode). But for the editor, we need
+the fields. And we do another SQL query to the presets database,
+querying the `fields` table with the list from the `preset_fields`.
 
-_TODO_
+Besides checking for a location, sorting languages, and sorting into two
+lists ("fields" and "more fields", based on the `required` flag), it does two
+more things.
 
-1. OsmChange vs OsmElement
-2. Detecting a preset
-3. Querying fields
-4. Localization
-5. Fields from plugins
-6. Built-in fields
-7. Sorting fields
-8. Postcode and opening hours
+First is building the combo options. While needed only for combo fields,
+it is a very resource-intensive operation, since it conflates three sources:
+
+1. Options listed in the field definition.
+2. Popular tag values from TagInfo.
+3. Popular tag values from all the downloaded data.
+
+The result is stored in a database table, to not do this again. But still, it is
+another database query, so make it four for cache misses.
+
+That's why the `getFields()` method implements its own in-memory caching. You
+can notice how long the first loading of the editor pane takes. That's because
+in the collapsed "more fields" section there are dozens of combo fields.
+
+Finally, the method calls the long `fieldFromJson` function from
+[`field.dart`](https://github.com/Zverik/every_door/blob/main/lib/models/field.dart).
+It has some overrides for common keys, and for others, it uses the type.
+It is pretty straightforward. When you're adding a field, do not forget
+to create it _twice_ in this file, in both functions.
+
+### Built-in Fields
+
+### Sorting Fields
+
+### Postcode and Opening Hours
+
+### Standard Fields
 
 ## Uploading to OpenStreetMap
 
@@ -86,7 +123,7 @@ _TODO_
 
 ## Zooming Out
 
-Every Door uses [flutter_map](https://pub.dev/packages/flutter_map) library for its mapping.
+Every Door uses [flutter\_map](https://pub.dev/packages/flutter_map) library for its mapping.
 Over the years it's been doing pretty complex things with it (but not "going native" complex).
 This section is mostly about providers and components: what happens when you change modes
 implicitly.
