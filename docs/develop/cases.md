@@ -95,11 +95,72 @@ to create it _twice_ in this file, in both functions.
 
 ### Built-in Fields
 
-### Sorting Fields
+For some OSM keys (not preset names, and not field types) there are specific
+classes instantiated in the `fieldFromJson()`. For example, `NamePresetField`
+for a name, or a `WebsiteField` for a website. Those provide unique experience
+in Every Door, often with shortcuts to edit tags faster, or set multiple tags
+at once considering the context.
 
 ### Postcode and Opening Hours
 
+Note that field processing (this section, standard fields etc) happens only
+when the object "[needs address](https://github.com/Zverik/every_door/blob/v6.0/lib/screens/editor.dart#L93)".
+Which means, it's either an amenity, a building, or an address point.
+
+First thing, an opening hours field is added unconditionally. Things just tend
+to have those.
+
+Then, a postal code (zip code) field is added. It is partially a hack: the address
+field in the default presets includes everything, but is not used. Instead, a custom
+field is added in Every Door, but it
+does not set a postcode (because it's a building property, not an amenity's).
+But some mappers might need it. For buildings and address points it is added to the
+main fields list, for other objects — to the additional list.
+
 ### Standard Fields
+
+An amenity is considered to need the full standard fields set when its preset mentions
+both `opening_hours` and `phone` anywhere. Otherwise a shorter list of just two
+fields is added, for an address and a floor.
+
+You can find the list of fields in
+[`kStandardPoiFields`](https://github.com/Zverik/every_door/blob/v6.0/lib/providers/presets.dart#L612).
+Note that it is constant, not dependent on anything. Each field is constructed
+alike to the `getFields()` method: queried from the preset database, injected
+with combo options, and cached. Plugins of course contribute to the results.
+
+When we don't need the full set, but a preset mentions some fields from the
+list, they are moved to the standard fields section as well.
+
+### Sorting Fields
+
+At this point, we have three lists of `PresetField` instances:
+pre-filled `stdFields`, and empty `fields` and `moreFields`.
+The [`extractFields()`](https://github.com/Zverik/every_door/blob/v6.0/lib/screens/editor.dart#L191)
+method copies field instances from the preset to the latter two lists.
+
+With two exceptions: first, the standard fields are obviously skipped.
+Second, any fields from the `moreFields` are moved to `fields` if their
+key is present on the object, or they have a matching
+[prerequisite](https://github.com/ideditor/schema-builder?tab=readme-ov-file#prerequisitetag).
+
+After this we have all three list prepared, and can re-render the editor page,
+displaying them to the user.
+
+## Zooming Out
+
+Every Door uses [flutter\_map](https://pub.dev/packages/flutter_map) library for its mapping.
+Over the years it's been doing pretty complex things with it (but not "going native" complex).
+This section is mostly about providers and components: what happens when you change modes
+implicitly.
+
+## Map Controllers
+
+## Modes and the Browser
+
+## Interactivity
+
+_Decisions on zoom levels and interactivity_
 
 ## Uploading to OpenStreetMap
 
@@ -120,16 +181,3 @@ _TODO_
 5. Uploading notes
 6. Uploading scribbles
 7. Notification
-
-## Zooming Out
-
-Every Door uses [flutter\_map](https://pub.dev/packages/flutter_map) library for its mapping.
-Over the years it's been doing pretty complex things with it (but not "going native" complex).
-This section is mostly about providers and components: what happens when you change modes
-implicitly.
-
-_TODO_
-
-1. Map controllers
-2. Modes in the browser
-3. Decisions on zoom levels and interactivity
