@@ -154,11 +154,38 @@ Over the years it's been doing pretty complex things with it (but not "going nat
 This section is mostly about providers and components: what happens when you change modes
 implicitly.
 
-## Map Controllers
+### Map Controllers
 
-## Modes and the Browser
+Flutter map instances report their state and can be controller via `MapController` objects.
+Note that when you use it for yourself, there are
+[certain troubles](https://docs.fleaflet.dev/usage/programmatic-interaction/external-custom-controllers)
+you have to go through.
 
-## Interactivity
+When you use the [`CustomMap`](https://github.com/Zverik/every_door/blob/main/lib/widgets/map.dart)
+widget in Every Door code, for bi-directional conversation
+you would pass the `CustomMapController`, which gets connected to the internal fields
+of the widget. With it, you can:
+
+* Access the `MapController` itself, so that you can access and affect the map state
+    from outer listeners.
+* Access the `GlobalKey` for the `FlutterMap` widget. It is used once, for detecting
+    its geometry on the screen.
+* Zoom the map to a list of locations. Useful for amenities and micromapping modes.
+
+In the `CustomMap` itself, there is a lengthy `MapEvent` listener. It only processes
+user-initiated events, and does this:
+
+* After moving the map, it updates the center location in `effectiveLocationProvider`.
+* After rotating, it updated the angle in `rotationProvider` (the value is commonly
+    used for `initialRotation` property of the `FlutterMap` constructor).
+* During the map movement initiated by the user, it disables GPS tracking
+    (in `trackingProvider`), and updates the zoom level in `zoomProvider`.
+
+And when the `switchToNavigate` flag is set, it also controls the navigation mode switch.
+
+### Modes and the Browser
+
+### Interactivity
 
 _Decisions on zoom levels and interactivity_
 
