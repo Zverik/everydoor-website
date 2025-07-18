@@ -9,18 +9,25 @@ various configurable subsystems.
 
 Top level keys are:
 
-* `id`: the plugin identifier. Should be different from other identifiers (otherwise this plugin would replace another with the same id), and consist of latin characters, numbers, dashes, and underscores. This is the only required key.
+* `id`: the plugin identifier. Should be different from other identifiers (otherwise this plugin
+    would replace another with the same id), and consist of latin characters, numbers, dashes,
+    and underscores. This is the only required key.
 * `name`: plugin name. Can be translated (see below).
 * `version`: numeric version (see below).
+* `api`: supported API versions: either a list of two versions (minimum and maximum, exclusive):
+    e.g. `[1.1, 3.0]` supports 2.1, but doesn't support 3.0; or a single version, in which case
+    the next major version won't be supported.
 * `description`: long-form description of what this plugin does. Split paragraphs with double newlines.
 * `author`: who wrote the plugin.
 * `icon`: an icon for the plugin (see below).
 * `experimental`: `true` if the plugin should be hidden from the repository lists, `false` otherwise.
 * `homepage`: a link to GitHub or another website to read about the plugin.
 * `source`: a link to download the recent version of the plugin.
-* `intro`: a text that will be shown after installing the plugin (not when installing from a file), and also available from the plugin page. Can contain any markdown, including images and links.
+* `intro`: a text that will be shown after installing the plugin (not when installing from a file),
+    and also available from the plugin page. Can contain any markdown, including images and links.
 
-While only the `id` key is required, it's best to provide as many values as possible, at least for the first four: including `name`, `version`, and `description`. Here's for an example:
+While only the `id` key is required, it's best to provide as many values as possible, at least
+for the first four: including `name`, `version`, and `description`. Here's for an example:
 
 ```yaml
 id: cycling_infra
