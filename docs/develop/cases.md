@@ -195,7 +195,7 @@ This section traces what happens when a user taps the upload button, but does no
 the entire uploading algorithm: it's a bit too complex. It would be useful to you to
 understand how providers interact, and how the data is packaged.
 
-_TODO_
+_This section will be completed later._
 
 1. Nav panel, upload button
 2. Upload provider
