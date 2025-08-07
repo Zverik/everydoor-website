@@ -30,11 +30,13 @@ Available keys are:
     * `tms`: a regular tile service with URLs usually ending in `/{zoom}/{x}/{y}.png`
     * `wms`: a WMS service, like the `turkuOrto` in the example. This type is implied when the URL contains `SERVICE=WMS`.
     * `mbtiles`: a packaged [MBTiles](https://wiki.openstreetmap.org/wiki/MBTiles) file. This type is implied when the url (which should point to the file) ends with `.mbtiles`. Only raster tile packages are supported. A web URL would probably fail.
+    * `vector`: a vector imagery layer, [see below](#vector-tiles).
 * `icon`: an icon to show on the imagery panel.
 * `attribution`: the string displayed on the screen when the layer is active.
 * `minZoom` and `maxZoom`: self-explanatory, integer numbers.
 * `wms4326`: a boolean field that should be true for WMS layers which support EPSG:4326, but not 3857.
 * `tileSize`: for TMS layers, defaults to 256.
+* `opacity`: layer opacity, between 0.0 and 1.0 (_since API 1.1_). Not all layer types support this. It is possible to have semi-transparent base tiles, and it would look weird.
 * `headers`: HTTP headers to add when requesting tiles.
 * `force`: when set to `true`, forces this imagery to be enabled when the plugin is installed, and on every app restart.
 
