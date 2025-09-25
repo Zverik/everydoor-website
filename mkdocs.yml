@@ -36,6 +36,7 @@ nav:
     - FAQ: guide/faq.md
     - Releases:
       - 6.0: guide/releases/6.0.md
+      - 7.0: guide/releases/7.0.md
   - Contributor Guide:
     - develop/index.md
     - Reporting Bugs: develop/bugs.md
