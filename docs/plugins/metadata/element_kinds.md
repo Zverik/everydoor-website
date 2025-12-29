@@ -27,7 +27,7 @@ It is not possible to extend the main key list through a plugin, you would need 
 
 Now, some standard element kinds apply only to the main tag (key and value). Those are `amenity`, `needsCheck`, `structure`, `micro`, and `everything`. Others either don't care for an object type (like `empty`), or acknowledge an object can be multiple things at once (like `building`).
 
-## Defining Kinds
+## Structural Style
 
 A simple `ElementKind` looks like this:
 
@@ -118,3 +118,58 @@ kinds:
               - bench
               - shelter
 ```
+
+## Simple Style
+
+_Since API 1.2_
+
+Learning the structures can be hard, so there is another way to define an element kind: through lists. The first three examples from the previous section can look like this:
+
+```yaml
+kinds:
+  cycleBarrier:
+    - barrier=cycle_barrier
+  everything:
+    update:
+      - amenity=parking
+  amenityKind:
+    - shop=*
+    - craft=*
+    - office=*
+    - healthcare=*
+    - club=*
+    - amenity except: [parking]
+    - amenity=recycling:
+      - recycling_type=centre
+```
+
+Basically you list supported tags for the element kind as strings. For conditions and exclusions, you can also use sub-lists.
+
+* `amenity=*` means all amenity values for the main key.
+* `amenity=school` means only `school` value for the `amenity` key.
+* `no amenity=parking` means all values supported for the `amenity` key, except `parking`.
+* `amenity only: [value1, value2]` is shortcut option to avoid re-typing the key. It is equivalent to `amenity=value1` and `amenity=value2`.
+* `amenity except: [value3, value4]` is the same shortcut for `no amenity=value1` and `no amenity=value2`.
+* `amenity=recycling: [recycling_type=centre]` from the example is a nested condition, which matches `recycling` only when there is a `recycling_type=centre` tag on the object.
+* `on all keys` in the parent matcher is a special phrase to disable matching on the main key only. See above for an explanation.
+
+### Updating Existing Kinds
+
+When you put your tag list under the `update` key, it does not replace, but updates an existing element kind. It would make sense
+to update `amenity`, `structure`, `needsCheck`, or `everything` kinds, but not others. Note that due to this style not supporting the `missing`
+key, you should not update this way the `needsInfo` matcher.
+
+```yaml
+kinds:
+  amenity:
+    - update:
+      - leisure=* # add to good keys
+      - no club=* # remove from good keys
+      - amenity=post_box # remove from exceptions
+      - amenity except: atm # add to exceptions
+      - leisure=playground # add to supported tags
+      - no leisure=marina # remove from supported tags
+    - xmas:feature except: tree # completely replace this value matcher
+```
+
+Note that due to differences in the structures, some changes might go not as planned. Please report an issue when you encounter this.
