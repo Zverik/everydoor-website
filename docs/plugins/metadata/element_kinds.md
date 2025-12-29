@@ -169,7 +169,18 @@ kinds:
       - amenity except: atm # add to exceptions
       - leisure=playground # add to supported tags
       - no leisure=marina # remove from supported tags
-    - xmas:feature except: tree # completely replace this value matcher
+    - tourism except: # completely replace this value matcher
+      - attraction
+      - viewpoint
+      - artwork
+      - picnic_site
+      - camp_pitch
+      - wilderness_hut
+      - cabin
+    - tourism=information:
+      - information=office
+      - information=visitor_centre
+    - xmas:feature except: tree
 ```
 
 Note that due to differences in the structures, some changes might go not as planned. Please report an issue when you encounter this.
